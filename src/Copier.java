@@ -40,6 +40,7 @@ public class Copier {
                 byte[] buff = new byte[2048];
                 while (inputStream.read(buff) != -1) {
                     outputStream.write(buff);
+                    outputStream.flush();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
