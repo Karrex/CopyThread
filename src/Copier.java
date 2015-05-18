@@ -38,8 +38,9 @@ public class Copier {
             try (BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(f));
                  BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(new File(to, f.getName())))) {
                 byte[] buff = new byte[2048];
-                while (inputStream.read(buff) != -1) {
-                    outputStream.write(buff);
+                int count;
+                while ((count = inputStream.read(buff)) != -1) {
+                    outputStream.write(buff, 0, count);
                     outputStream.flush();
                 }
             } catch (IOException e) {
